@@ -1,2 +1,2 @@
-# yuanlinm.github.io
+# yuanlinm.cc
 Hello！
