@@ -1,9 +1,3 @@
----
-title: YuanlinMの小站
-created: '2022-01-12T14:58:12.050Z'
-modified: '2022-01-12T16:08:55.567Z'
----
-
 ## <center><font face="思源宋体 CN" >YuanlinMの小站</font></center>
 
 #### <font face="思源宋体 CN"><center><u>[关于](http://example.net/)</u> </center></font>
