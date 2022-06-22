@@ -1,2 +1,0 @@
-# yuanlinm.cc
-Hello！
