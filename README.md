@@ -1,2 +1,2 @@
 # Hellow World!
-# Please click the link to learn more : (This link)[https://yuanlinm.github.io/]
+# Please click the link to learn more : https://yuanlinm.github.io/
