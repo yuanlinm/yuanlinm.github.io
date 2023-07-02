@@ -1,6 +1,5 @@
-```
-R codes
+` R codes `
 library(survival)
 m = coxph(Surv(survtime, event) ~ x1 + x2 + x3 + pc1 + pc2, data = dat1)
 summary(m)
-```
+`
