@@ -1,4 +1,4 @@
-### 1. [Cox Regression]()
+### 1. [Cox Regression](study.doc/Cox regression)
 ### 2. GWAS
 ### 3. Mendelian Randomization
 ### 4. Non-linear Mendelian Randomization
