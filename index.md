@@ -4,4 +4,4 @@
 
 ## [1. Study](Study.md)
 
-> need anything? pLease sEnt mE aN eMail:[yuanlinm@qq.com](yuanlinm@qq.com)
+> nEed aNything? pLease sEnt mE aN eMail:[yuanlinm@qq.com](yuanlinm@qq.com)
