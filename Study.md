@@ -1,4 +1,4 @@
-### 1. [Cox Regression](study.doc/Cox regression)
+### 1. Cox Regression
 ### 2. GWAS
 ### 3. PRS calculation(C+T)
 ### 4. Mendelian Randomization
