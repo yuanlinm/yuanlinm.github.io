@@ -21,12 +21,3 @@
 4. METAL
 5. Locuszoom1.4
 
-## Exposure
-1. KAP score
-2. Baidu index
-3. Telomere length
-4. Air pollution
-
-## outcome 
-1. Score or index
-2. Lung cancer
