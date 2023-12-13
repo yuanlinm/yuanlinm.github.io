@@ -13,3 +13,10 @@
 12. META analysis(oR Heterogeneity Test)
 13. Cox regression considering the lag patterns for long-term exposure
 14. Cox regression considering the cumulative effect for long-term exposure
+
+## System and software
+1. *Linux*
+2. R
+3. Plink2
+4. METAL
+5. Locuszoom1.4
