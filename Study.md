@@ -28,5 +28,5 @@
 4. Air pollution
 
 ## outcome 
-1. Fitness
+1. Score or index
 2. Lung cancer
