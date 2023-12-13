@@ -4,3 +4,4 @@
 > created using lab.magiconch.com
 >
 ![cn imba map](/pic_materials/[神奇海螺][中国制霸].png =50x50)
+<img src="/pic_materials/[神奇海螺][中国制霸].png" width="200">
