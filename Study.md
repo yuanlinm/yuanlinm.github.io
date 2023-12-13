@@ -2,7 +2,7 @@
 ### 2. GWAS
 ### 3. PRS calculation(C+T)
 ### 4. Mendelian Randomization
-### 5. Non-linear Mendelian Randomization (It's validity been debated in Nature)
+### 5. Non-linear Mendelian Randomization (*It's validity has been debated in Nature*)
 ### 6. Mediation Analysis (counterfactual hypothesis)
 ### 7. Additional(oR Multiplicative) Interaction Analysis
 ### 8. Time-dependent cox model(long data)
