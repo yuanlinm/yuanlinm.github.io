@@ -20,3 +20,7 @@
 3. Plink2
 4. METAL
 5. Locuszoom1.4
+
+## Exposure
+1. Telomere length
+2. Air pollution
