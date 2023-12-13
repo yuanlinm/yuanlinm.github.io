@@ -1,4 +1,4 @@
-## Used
+## Analysis
 1. Cox Regression
 2. GWAS
 3. PRS calculation(C+T)
