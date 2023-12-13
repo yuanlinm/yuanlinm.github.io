@@ -26,3 +26,7 @@
 2. Baidu index
 3. Telomere length
 4. Air pollution
+
+## outcome 
+1. Fitness
+2. Lung cancer
