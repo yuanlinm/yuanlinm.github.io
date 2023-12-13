@@ -15,7 +15,7 @@
 14. Cox regression considering the cumulative effect for long-term exposure
 
 ## System and software
-1. **Linux**
+1. **Linux/MacOS/Windows**
 2. R
 3. Plink2
 4. METAL
