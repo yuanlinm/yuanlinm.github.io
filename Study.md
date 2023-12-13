@@ -10,3 +10,5 @@
 ### 10. RCS(Restricted Cubic Spline)
 ### 11. P-Sp(Penalized Spline)
 ### 12. META analysis(oR Heterogeneity Test)
+### 13. Cox regression considering the lag patterns for long-term exposure
+### 14. Cox regression considering the cumulative effect for long-term exposure
