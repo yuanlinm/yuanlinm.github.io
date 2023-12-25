@@ -1,6 +1,6 @@
 # Published works
 
-> [my ORCID link](https://orcid.org/my-orcid?orcid=0000-0003-4117-9660)
+> [my ORCID link](https://orcid.org/0000-0003-4117-9660)
 
 ## Undergraduated period
 
