@@ -8,10 +8,10 @@
 
 ---
 
-A fallen blossom
+<center>A fallen blossom</center>
 
-Is coming back to the branch.
+<center>Is coming back to the branch.</center>
 
-Look, a butterfly!
+<center>Look, a butterfly!</center>
 
-(by Moritake)
+<center>(by Moritake)</center>
