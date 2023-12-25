@@ -19,5 +19,5 @@
 2. R
 3. Plink2
 4. METAL
-5. Locuszoom1.4
+5. Locuszoom in linux
 
