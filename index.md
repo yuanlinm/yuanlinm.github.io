@@ -6,12 +6,3 @@
 ## [2. Been where](Been_where.md)
 ## [3. Pepers](Publication.md)
 
----
-
-A fallen blossom
-
-Is coming back to the branch.
-
-Look, a butterfly!
-
-(by Moritake)
