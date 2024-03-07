@@ -1,4 +1,4 @@
-* do wt all late *
+*do wt all late*
 
 ## Linguistics & Philo
 1. Sructuralism, [Ferdinand de Saussure](https://en.wikipedia.org/wiki/Ferdinand_de_Saussure)
