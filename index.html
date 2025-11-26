@@ -3,104 +3,498 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BACKFIRE_sup{99}</title>
+  <title>Yuanlin Mou - Epidemiology Researcher</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      line-height: 1.6;
-      color: #fff;
-      background: #374C78;
-    }
-    h1, h2 {
-      border-bottom: 1px solid #e1e4e8;
-      padding-bottom: 10px;
-    }
-    h1 {
-      font-size: 24px;
-    }
-    h2 {
-      font-size: 20px;
-      margin-top: 30px;
-    }
-    p {
-      margin: 0 0 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    th, td {
-      border: 1px solid #e1e4e8;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background: #f6f8fa;
-    }
-    ul {
-      list-style: none;
+    * {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0;
     }
-    li {
-      margin-bottom: 10px;
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #24292f;
+      background: #f6f8fa;
     }
-    li a {
-      color: #0366d6;
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    
+    /* Header Profile Section */
+    .profile-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #d0d7de;
+      margin-bottom: 24px;
+    }
+    
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: white;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .profile-info h1 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #24292f;
+      margin-bottom: 4px;
+    }
+    
+    .profile-info .username {
+      font-size: 20px;
+      color: #57606a;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    
+    .profile-info .bio {
+      font-size: 14px;
+      color: #57606a;
+      margin-bottom: 12px;
+      max-width: 600px;
+    }
+    
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: #57606a;
+      flex-wrap: wrap;
+    }
+    
+    .contact-info a {
+      color: #0969da;
       text-decoration: none;
     }
-    li a:hover {
+    
+    .contact-info a:hover {
       text-decoration: underline;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    /* Main Content */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    
+    /* Section Styles */
+    .section {
+      background: #ffffff;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 16px;
+    }
+    
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #24292f;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .section-title svg {
+      color: #57606a;
+    }
+    
+    /* Repository Cards */
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    
+    .repo-card {
+      background: #ffffff;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 16px;
+      transition: border-color 0.2s ease;
+    }
+    
+    .repo-card:hover {
+      border-color: #0969da;
+    }
+    
+    .repo-card a {
+      text-decoration: none;
+    }
+    
+    .repo-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0969da;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    
+    .repo-name svg {
+      color: #57606a;
+    }
+    
+    .repo-description {
+      font-size: 12px;
+      color: #57606a;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    
+    .repo-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: #57606a;
+    }
+    
+    .repo-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .language-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    
+    .language-r {
+      background-color: #198CE7;
+    }
+    
+    .language-python {
+      background-color: #3572A5;
+    }
+    
+    /* Education Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      background: #d0d7de;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 16px;
+    }
+    
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0969da;
+      border: 2px solid #ffffff;
+    }
+    
+    .timeline-year {
+      font-size: 12px;
+      color: #57606a;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    
+    .timeline-degree {
+      font-size: 14px;
+      font-weight: 600;
+      color: #24292f;
+    }
+    
+    .timeline-institution {
+      font-size: 13px;
+      color: #57606a;
+    }
+    
+    /* Publications */
+    .publication-list {
+      list-style: none;
+    }
+    
+    .publication-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #d0d7de;
+    }
+    
+    .publication-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    .publication-item:first-child {
+      padding-top: 0;
+    }
+    
+    .publication-item a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .publication-item a:hover .publication-title {
+      color: #0969da;
+    }
+    
+    .publication-number {
+      font-size: 12px;
+      color: #57606a;
+      margin-bottom: 4px;
+    }
+    
+    .publication-title {
+      font-size: 14px;
+      color: #24292f;
+      line-height: 1.5;
+      transition: color 0.2s ease;
+    }
+    
+    .publication-title b {
+      color: #0969da;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: #57606a;
+      border-top: 1px solid #d0d7de;
+      margin-top: 32px;
+    }
+    
+    .footer a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .profile-info .bio {
+        max-width: 100%;
+      }
+      
+      .contact-info {
+        justify-content: center;
+      }
+      
+      .repo-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>BACKFIRE_sup{99}</h1>
-  
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I am a Ph.D. candidate in epidemiology, focusing on the impact of ambient air pollution on lung cancer in never smokers. I utilize both macOS and Linux for my research. Most of my work involves traditional association studies, including Cox regression, mediation, and interaction analyses. Additionally, I have experience with bioinformatics analyses, such as genome-wide association studies and Mendelian randomization. I am a self-motivated worker who enjoys conducting independent investigations. Email: boomers_clip.1e@icloud.com
-    </p>
-  </section>
-  
-  <section>
-    <h2>Educational Background</h2>
-    <table>
-      <tr>
-        <th style="color: #000000">Year</th>
-        <th style="color: #000000">Degree</th>
-        <th style="color: #000000">Institution</th>
-      </tr>
-      <tr>
-        <td>2017-2022</td>
-        <td>MBBS in Prevention Medicine</td>
-        <td>CQMU</td>
-      </tr>
-      <tr>
-        <td>2022-2025</td>
-        <td>MMed in epidemiology</td>
-        <td>NJMU</td>
-      </tr>
-      <tr>
-        <td>2025-Present</td>
-        <td>Ph.D. Candidate in epidemiology</td>
-        <td>NJMU</td>
-      </tr>
-    </table>
-  </section>
-  
-  <section>
-    <h2>Publications</h2>
-    <ul>
-      <li><a href="https://doi.org/10.3389/fpubh.2021.679699" style="color: inherit; text-decoration: none;">1. Fan, Z., <b>#Mou, Y.</b>, Cheng, R., Zhao, Y., & Zhang, F. (2021). Investigation of Knowledge, Attitude and Practice of Personal Protection Among Different Types of Workers Returning to Work Under COVID-19 Epidemic. Frontiers in public health, 9, 679699</a></li>
-      <li><a href="https://doi.org/10.1038/s41598-022-21378-y" style="color: inherit; text-decoration: none;">2. Hu, Q., <b>#Mou, Y. L.</b>, Yin, R. Y., Tang, L., & Zhang, F. (2022). Using the Baidu index to understand Chinese interest in thyroid related diseases. Scientific reports, 12(1), 17160</a></li>
-      <li><a href="https://doi.org/10.1164/rccm.202408-1661OC" style="color: inherit; text-decoration: none;">3. Zhu, M., Han, Y., <b>#Mou, Y.</b>, Meng, X., Ji, C., Zhu, X., Yu, C., Sun, D., Yang, L., Sun, Q., Chen, Y., Du, H., Dai, J., Chen, Z., Hu, Z., Lv, J., Jin, G., Ma, H., Kan, H., Li, L., … Shen, H. (2025). Effect of Long-Term Fine Particulate Matter Exposure on Lung Cancer Incidence and Mortality in Chinese Nonsmokers. American journal of respiratory and critical care medicine, 211(4), 600–609</a></li>
-      <li><a href="https://rs.yiigle.com/cmaid/1550356" style="color: inherit; text-decoration: none;">4. 朱猛, <b>#牟园淋</b>, 马红霞, 等. 非吸烟人群肺癌流行病学研究进展[J]. 中华医学杂志, 2025, 105(28): 2425-2431.</a></li>
-    </ul>
-  </section>
+  <div class="container">
+    <!-- Profile Header -->
+    <header class="profile-header">
+      <div class="avatar">YM</div>
+      <div class="profile-info">
+        <h1>Yuanlin Mou</h1>
+        <div class="username">@yuanlinm</div>
+        <p class="bio">
+          Ph.D. candidate in epidemiology, focusing on the impact of ambient air pollution on lung cancer in never smokers. Experienced in Cox regression, mediation analysis, GWAS, and Mendelian randomization.
+        </p>
+        <div class="contact-info">
+          <span class="contact-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"/>
+            </svg>
+            <a href="mailto:boomers_clip.1e@icloud.com">boomers_clip.1e@icloud.com</a>
+          </span>
+          <span class="contact-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
+            </svg>
+            <a href="https://github.com/yuanlinm" target="_blank">yuanlinm</a>
+          </span>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Repositories Section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/>
+          </svg>
+          Repositories
+        </h2>
+        <div class="repo-grid">
+          <!-- myepi repo -->
+          <div class="repo-card">
+            <a href="https://github.com/yuanlinm/myepi" target="_blank">
+              <div class="repo-name">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/>
+                </svg>
+                myepi
+              </div>
+              <p class="repo-description">My own epidemiology tools R package for statistical analysis and research</p>
+              <div class="repo-meta">
+                <span class="repo-meta-item">
+                  <span class="language-dot language-r"></span>
+                  R
+                </span>
+                <span class="repo-meta-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/>
+                  </svg>
+                  7
+                </span>
+              </div>
+            </a>
+          </div>
+          
+          <!-- apgis repo -->
+          <div class="repo-card">
+            <a href="https://github.com/yuanlinm/apgis" target="_blank">
+              <div class="repo-name">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/>
+                </svg>
+                apgis
+              </div>
+              <p class="repo-description">A comprehensive repository for processing, analyzing, and visualizing air pollution data using GIS techniques and spatial analysis tools</p>
+              <div class="repo-meta">
+                <span class="repo-meta-item">
+                  <span class="language-dot language-python"></span>
+                  Python
+                </span>
+                <span class="repo-meta-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/>
+                  </svg>
+                  0
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Education Section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0L0 4l3 1.5v4.5l5 2.5 5-2.5V5.5L16 4 8 0zm0 1.5L14.2 4 8 6.5 1.8 4 8 1.5zM4.5 6.25L8 7.75l3.5-1.5v3.25L8 11.5 4.5 9.5V6.25z"/>
+          </svg>
+          Education
+        </h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2025 - Present</div>
+            <div class="timeline-degree">Ph.D. Candidate in Epidemiology</div>
+            <div class="timeline-institution">Nanjing Medical University (NJMU)</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022 - 2025</div>
+            <div class="timeline-degree">Master of Medicine in Epidemiology</div>
+            <div class="timeline-institution">Nanjing Medical University (NJMU)</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2017 - 2022</div>
+            <div class="timeline-degree">MBBS in Preventive Medicine</div>
+            <div class="timeline-institution">Chongqing Medical University (CQMU)</div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Publications Section -->
+      <section class="section">
+        <h2 class="section-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"/>
+          </svg>
+          Publications
+        </h2>
+        <ul class="publication-list">
+          <li class="publication-item">
+            <a href="https://doi.org/10.1164/rccm.202408-1661OC" target="_blank">
+              <div class="publication-number">American Journal of Respiratory and Critical Care Medicine, 2025</div>
+              <div class="publication-title">Zhu, M., Han, Y., <b>#Mou, Y.</b>, et al. Effect of Long-Term Fine Particulate Matter Exposure on Lung Cancer Incidence and Mortality in Chinese Nonsmokers.</div>
+            </a>
+          </li>
+          <li class="publication-item">
+            <a href="https://rs.yiigle.com/cmaid/1550356" target="_blank">
+              <div class="publication-number">中华医学杂志, 2025</div>
+              <div class="publication-title">朱猛, <b>#牟园淋</b>, 马红霞, 等. 非吸烟人群肺癌流行病学研究进展.</div>
+            </a>
+          </li>
+          <li class="publication-item">
+            <a href="https://doi.org/10.1038/s41598-022-21378-y" target="_blank">
+              <div class="publication-number">Scientific Reports, 2022</div>
+              <div class="publication-title">Hu, Q., <b>#Mou, Y. L.</b>, Yin, R. Y., Tang, L., & Zhang, F. Using the Baidu index to understand Chinese interest in thyroid related diseases.</div>
+            </a>
+          </li>
+          <li class="publication-item">
+            <a href="https://doi.org/10.3389/fpubh.2021.679699" target="_blank">
+              <div class="publication-number">Frontiers in Public Health, 2021</div>
+              <div class="publication-title">Fan, Z., <b>#Mou, Y.</b>, Cheng, R., Zhao, Y., & Zhang, F. Investigation of Knowledge, Attitude and Practice of Personal Protection Among Different Types of Workers Returning to Work Under COVID-19 Epidemic.</div>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Yuanlin Mou · Built with ❤️ · <a href="https://github.com/yuanlinm/yuanlinm.github.io" target="_blank">Source</a></p>
+    </footer>
+  </div>
 </body>
 </html>
