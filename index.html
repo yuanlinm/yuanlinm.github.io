@@ -10,196 +10,401 @@
       margin: 0;
       padding: 0;
     }
-    
+
+    :root {
+      color-scheme: dark;
+      --bg-primary: #080b14;
+      --bg-secondary: #0f172a;
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-strong: rgba(255, 255, 255, 0.14);
+      --border: rgba(255, 255, 255, 0.18);
+      --text-primary: #f8fafc;
+      --text-secondary: rgba(248, 250, 252, 0.72);
+      --text-muted: rgba(248, 250, 252, 0.55);
+      --accent: #7dd3fc;
+      --accent-strong: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.24);
+      --accent-2: #c4b5fd;
+      --accent-2-soft: rgba(196, 181, 253, 0.24);
+      --shadow: 0 30px 80px rgba(8, 15, 32, 0.55);
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.6;
-      color: #24292f;
-      background: #f6f8fa;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
     }
-    
+
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    body::before {
+      background:
+        radial-gradient(600px 320px at 15% 15%, rgba(125, 211, 252, 0.45), transparent 70%),
+        radial-gradient(620px 360px at 85% 20%, rgba(196, 181, 253, 0.4), transparent 70%),
+        radial-gradient(720px 420px at 60% 80%, rgba(45, 212, 191, 0.35), transparent 75%),
+        radial-gradient(420px 260px at 30% 70%, rgba(251, 191, 36, 0.2), transparent 75%);
+      animation: aurora 18s ease-in-out infinite;
+      filter: blur(4px);
+    }
+
+    body::after {
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.12));
+      mix-blend-mode: screen;
+      animation: aurora 26s ease-in-out infinite reverse;
+      opacity: 0.6;
+    }
+
+    @keyframes aurora {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-2%, -1%, 0) scale(1.05);
+      }
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
     .container {
-      max-width: 1000px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 24px;
+      padding: 40px 24px 64px;
+      position: relative;
+      z-index: 1;
     }
-    
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent 55%);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glass-card {
+      background: var(--glass-strong);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 55%);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glass > *,
+    .glass-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
     /* Header Profile Section */
     .profile-header {
-      display: flex;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: auto 1fr;
       gap: 24px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid #d0d7de;
-      margin-bottom: 24px;
+      padding: 28px;
+      align-items: center;
     }
-    
+
     .avatar {
       width: 120px;
       height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(125, 211, 252, 0.9), rgba(59, 130, 246, 0.8), rgba(196, 181, 253, 0.9));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
-      color: white;
-      font-weight: 600;
+      font-size: 42px;
+      color: #0f172a;
+      font-weight: 700;
       flex-shrink: 0;
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.45);
     }
-    
+
     .profile-info h1 {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 600;
-      color: #24292f;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.4px;
     }
-    
+
     .profile-info .username {
-      font-size: 20px;
-      color: #57606a;
-      font-weight: 400;
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 500;
       margin-bottom: 12px;
     }
-    
+
     .profile-info .bio {
       font-size: 14px;
-      color: #57606a;
-      margin-bottom: 12px;
-      max-width: 600px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      max-width: 680px;
     }
-    
+
     .contact-info {
       display: flex;
       align-items: center;
       gap: 16px;
-      font-size: 14px;
-      color: #57606a;
+      font-size: 13px;
+      color: var(--text-muted);
       flex-wrap: wrap;
     }
-    
+
     .contact-info a {
-      color: #0969da;
+      color: var(--accent);
       text-decoration: none;
     }
-    
+
     .contact-info a:hover {
-      text-decoration: underline;
+      color: var(--accent-strong);
     }
-    
+
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
-    
+
+    .contact-item svg {
+      color: var(--text-muted);
+    }
+
     /* Main Content */
     .main-content {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
+      margin-top: 24px;
     }
-    
+
     /* Section Styles */
     .section {
-      background: #ffffff;
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
-      padding: 16px;
+      padding: 24px;
     }
-    
+
     .section-title {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
-      color: #24292f;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
-    
+
     .section-title svg {
-      color: #57606a;
+      color: var(--accent);
     }
-    
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    /* Research Focus */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .focus-card {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-header h3 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-badge {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(125, 211, 252, 0.45);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .card-badge.muted {
+      background: var(--accent-2-soft);
+      color: var(--accent-2);
+      border-color: rgba(196, 181, 253, 0.45);
+    }
+
+    .card-summary {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .topic-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .topic-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .topic-list li::before {
+      content: '•';
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+    }
+
     /* Repository Cards */
     .repo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 16px;
     }
-    
+
     .repo-card {
-      background: #ffffff;
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
       padding: 16px;
-      transition: border-color 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
-    
+
     .repo-card:hover {
-      border-color: #0969da;
+      border-color: rgba(125, 211, 252, 0.65);
+      box-shadow: 0 20px 35px rgba(15, 23, 42, 0.35);
+      transform: translateY(-4px);
     }
-    
+
     .repo-card a {
       text-decoration: none;
+      color: inherit;
     }
-    
+
     .repo-name {
       font-size: 14px;
       font-weight: 600;
-      color: #0969da;
+      color: var(--accent);
       display: flex;
       align-items: center;
       gap: 6px;
       margin-bottom: 8px;
     }
-    
+
     .repo-name svg {
-      color: #57606a;
+      color: var(--text-muted);
     }
-    
+
     .repo-description {
       font-size: 12px;
-      color: #57606a;
+      color: var(--text-secondary);
       margin-bottom: 12px;
       line-height: 1.5;
     }
-    
+
     .repo-meta {
       display: flex;
       align-items: center;
       gap: 16px;
       font-size: 12px;
-      color: #57606a;
+      color: var(--text-muted);
     }
-    
+
     .repo-meta-item {
       display: flex;
       align-items: center;
       gap: 4px;
     }
-    
+
     .language-dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
     }
-    
+
     .language-r {
-      background-color: #198CE7;
+      background-color: #46a3ff;
     }
-    
+
     .language-python {
-      background-color: #3572A5;
+      background-color: #7aa6ff;
     }
-    
+
     /* Education Timeline */
     .timeline {
       position: relative;
       padding-left: 24px;
     }
-    
+
     .timeline::before {
       content: '';
       position: absolute;
@@ -207,18 +412,18 @@
       top: 4px;
       bottom: 4px;
       width: 2px;
-      background: #d0d7de;
+      background: rgba(255, 255, 255, 0.2);
     }
-    
+
     .timeline-item {
       position: relative;
       padding-bottom: 16px;
     }
-    
+
     .timeline-item:last-child {
       padding-bottom: 0;
     }
-    
+
     .timeline-item::before {
       content: '';
       position: absolute;
@@ -227,109 +432,113 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #0969da;
-      border: 2px solid #ffffff;
+      background: var(--accent);
+      border: 2px solid rgba(8, 15, 32, 0.7);
     }
-    
+
     .timeline-year {
       font-size: 12px;
-      color: #57606a;
+      color: var(--text-muted);
       font-weight: 500;
       margin-bottom: 2px;
     }
-    
+
     .timeline-degree {
       font-size: 14px;
       font-weight: 600;
-      color: #24292f;
+      color: var(--text-primary);
     }
-    
+
     .timeline-institution {
       font-size: 13px;
-      color: #57606a;
+      color: var(--text-secondary);
     }
-    
+
     /* Publications */
     .publication-list {
       list-style: none;
     }
-    
+
     .publication-item {
       padding: 12px 0;
-      border-bottom: 1px solid #d0d7de;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
     }
-    
+
     .publication-item:last-child {
       border-bottom: none;
       padding-bottom: 0;
     }
-    
+
     .publication-item:first-child {
       padding-top: 0;
     }
-    
+
     .publication-item a {
       text-decoration: none;
       color: inherit;
       display: block;
     }
-    
+
     .publication-item a:hover .publication-title {
-      color: #0969da;
+      color: var(--accent);
     }
-    
+
     .publication-number {
       font-size: 12px;
-      color: #57606a;
+      color: var(--text-muted);
       margin-bottom: 4px;
     }
-    
+
     .publication-title {
       font-size: 14px;
-      color: #24292f;
+      color: var(--text-secondary);
       line-height: 1.5;
       transition: color 0.2s ease;
     }
-    
+
     .publication-title b {
-      color: #0969da;
+      color: var(--accent);
     }
-    
+
     /* Footer */
     .footer {
       text-align: center;
       padding: 24px;
       font-size: 12px;
-      color: #57606a;
-      border-top: 1px solid #d0d7de;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
       margin-top: 32px;
     }
-    
+
     .footer a {
-      color: #0969da;
+      color: var(--accent);
       text-decoration: none;
     }
-    
+
     .footer a:hover {
-      text-decoration: underline;
+      color: var(--accent-strong);
     }
-    
+
     /* Responsive */
     @media (max-width: 768px) {
       .profile-header {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         align-items: center;
         text-align: center;
       }
-      
+
+      .avatar {
+        margin: 0 auto;
+      }
+
       .profile-info .bio {
         max-width: 100%;
       }
-      
+
       .contact-info {
         justify-content: center;
       }
-      
+
       .repo-grid {
         grid-template-columns: 1fr;
       }
@@ -339,7 +548,7 @@
 <body>
   <div class="container">
     <!-- Profile Header -->
-    <header class="profile-header">
+    <header class="profile-header glass">
       <div class="avatar">YM</div>
       <div class="profile-info">
         <h1>Yuanlin Mou</h1>
@@ -366,8 +575,57 @@
     
     <!-- Main Content -->
     <main class="main-content">
+      <!-- Research Focus Section -->
+      <section class="section glass">
+        <h2 class="section-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M7.5.75a.75.75 0 0 1 1.5 0l.43 2.02a4.5 4.5 0 0 0 3.32 3.32l2.02.43a.75.75 0 0 1 0 1.5l-2.02.43a4.5 4.5 0 0 0-3.32 3.32l-.43 2.02a.75.75 0 0 1-1.5 0l-.43-2.02a4.5 4.5 0 0 0-3.32-3.32l-2.02-.43a.75.75 0 0 1 0-1.5l2.02-.43a4.5 4.5 0 0 0 3.32-3.32Z"/>
+          </svg>
+          Research Focus
+        </h2>
+        <p class="section-subtitle">A clear view of what I am advancing now and the studies I have completed.</p>
+        <div class="focus-grid">
+          <article class="focus-card glass-card">
+            <div class="card-header">
+              <h3>Current Research</h3>
+              <span class="card-badge">In Progress</span>
+            </div>
+            <p class="card-summary">Investigating how environmental exposures shape lung cancer risk in never smokers.</p>
+            <ul class="topic-list">
+              <li>Ambient air pollution exposure and lung cancer incidence</li>
+              <li>Exposure-response modeling with Cox regression</li>
+              <li>Mediation analysis for causal pathways</li>
+              <li>GWAS and Mendelian randomization integration</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">Air Pollution</span>
+              <span class="tag">Causal Inference</span>
+              <span class="tag">Genetics</span>
+              <span class="tag">Never Smokers</span>
+            </div>
+          </article>
+          <article class="focus-card glass-card">
+            <div class="card-header">
+              <h3>Past Research</h3>
+              <span class="card-badge muted">Completed</span>
+            </div>
+            <p class="card-summary">Selected published projects that shaped my current research direction.</p>
+            <ul class="topic-list">
+              <li>Long-term PM2.5 exposure and lung cancer outcomes</li>
+              <li>Baidu Index analytics for thyroid disease interest</li>
+              <li>COVID-19 protection knowledge, attitude, and practice</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">Epidemiology</span>
+              <span class="tag">Digital Health</span>
+              <span class="tag">Public Health</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <!-- Repositories Section -->
-      <section class="section">
+      <section class="section glass">
         <h2 class="section-title">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
             <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/>
@@ -376,7 +634,7 @@
         </h2>
         <div class="repo-grid">
           <!-- myepi repo -->
-          <div class="repo-card">
+          <div class="repo-card glass-card">
             <a href="https://github.com/yuanlinm/myepi" target="_blank">
               <div class="repo-name">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
@@ -401,7 +659,7 @@
           </div>
           
           <!-- apgis repo -->
-          <div class="repo-card">
+          <div class="repo-card glass-card">
             <a href="https://github.com/yuanlinm/apgis" target="_blank">
               <div class="repo-name">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
@@ -428,7 +686,7 @@
       </section>
       
       <!-- Education Section -->
-      <section class="section">
+      <section class="section glass">
         <h2 class="section-title">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
             <path d="M8 0L0 4l3 1.5v4.5l5 2.5 5-2.5V5.5L16 4 8 0zm0 1.5L14.2 4 8 6.5 1.8 4 8 1.5zM4.5 6.25L8 7.75l3.5-1.5v3.25L8 11.5 4.5 9.5V6.25z"/>
@@ -455,7 +713,7 @@
       </section>
       
       <!-- Publications Section -->
-      <section class="section">
+      <section class="section glass">
         <h2 class="section-title">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
             <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"/>
