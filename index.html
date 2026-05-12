@@ -19,6 +19,7 @@
       --glass: rgba(255, 255, 255, 0.08);
       --glass-strong: rgba(255, 255, 255, 0.14);
       --border: rgba(255, 255, 255, 0.18);
+      --border-strong: rgba(255, 255, 255, 0.25);
       --text-primary: #f8fafc;
       --text-secondary: rgba(248, 250, 252, 0.72);
       --text-muted: rgba(248, 250, 252, 0.55);
@@ -27,6 +28,10 @@
       --accent-soft: rgba(56, 189, 248, 0.24);
       --accent-2: #c4b5fd;
       --accent-2-soft: rgba(196, 181, 253, 0.24);
+      --aurora-cyan: rgba(125, 211, 252, 0.45);
+      --aurora-purple: rgba(196, 181, 253, 0.4);
+      --aurora-teal: rgba(45, 212, 191, 0.35);
+      --aurora-amber: rgba(251, 191, 36, 0.2);
       --shadow: 0 30px 80px rgba(8, 15, 32, 0.55);
     }
 
@@ -52,10 +57,10 @@
 
     body::before {
       background:
-        radial-gradient(600px 320px at 15% 15%, rgba(125, 211, 252, 0.45), transparent 70%),
-        radial-gradient(620px 360px at 85% 20%, rgba(196, 181, 253, 0.4), transparent 70%),
-        radial-gradient(720px 420px at 60% 80%, rgba(45, 212, 191, 0.35), transparent 75%),
-        radial-gradient(420px 260px at 30% 70%, rgba(251, 191, 36, 0.2), transparent 75%);
+        radial-gradient(600px 320px at 15% 15%, var(--aurora-cyan), transparent 70%),
+        radial-gradient(620px 360px at 85% 20%, var(--aurora-purple), transparent 70%),
+        radial-gradient(720px 420px at 60% 80%, var(--aurora-teal), transparent 75%),
+        radial-gradient(420px 260px at 30% 70%, var(--aurora-amber), transparent 75%);
       animation: aurora 18s ease-in-out infinite;
       filter: blur(4px);
     }
@@ -111,7 +116,7 @@
 
     .glass-card {
       background: var(--glass-strong);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 1px solid var(--border-strong);
       border-radius: 20px;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -323,8 +328,8 @@
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      background: var(--glass);
       color: var(--text-secondary);
     }
 
