@@ -62,7 +62,7 @@
         radial-gradient(720px 420px at 60% 80%, var(--aurora-teal), transparent 75%),
         radial-gradient(420px 260px at 30% 70%, var(--aurora-amber), transparent 75%);
       animation: aurora 18s ease-in-out infinite;
-      filter: blur(4px);
+      filter: blur(2px);
     }
 
     body::after {
@@ -81,6 +81,13 @@
       }
       100% {
         transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before,
+      body::after {
+        animation: none;
       }
     }
 
