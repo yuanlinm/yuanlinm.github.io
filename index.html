@@ -18,6 +18,8 @@
       --bg-secondary: #0f172a;
       --glass: rgba(255, 255, 255, 0.08);
       --glass-strong: rgba(255, 255, 255, 0.14);
+      --glass-fallback: rgba(8, 11, 20, 0.88);
+      --glass-card-fallback: rgba(8, 11, 20, 0.78);
       --border: rgba(255, 255, 255, 0.18);
       --border-strong: rgba(255, 255, 255, 0.25);
       --text-primary: #f8fafc;
@@ -62,7 +64,7 @@
         radial-gradient(720px 420px at 60% 80%, var(--aurora-teal), transparent 75%),
         radial-gradient(420px 260px at 30% 70%, var(--aurora-amber), transparent 75%);
       animation: aurora 18s ease-in-out infinite;
-      filter: blur(1px);
+      filter: none;
     }
 
     body::after {
@@ -103,8 +105,8 @@
       background: var(--glass);
       border: 1px solid var(--border);
       border-radius: 24px;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
@@ -125,8 +127,8 @@
       background: var(--glass-strong);
       border: 1px solid var(--border-strong);
       border-radius: 20px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
       isolation: isolate;
@@ -146,6 +148,16 @@
     .glass-card > * {
       position: relative;
       z-index: 1;
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .glass {
+        background: var(--glass-fallback);
+      }
+
+      .glass-card {
+        background: var(--glass-card-fallback);
+      }
     }
 
     /* Header Profile Section */
