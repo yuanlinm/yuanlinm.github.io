@@ -9,8 +9,3 @@ I study how ambient air pollution affects lung cancer risk in never-smokers, usi
 
 - Email: boomers_clip.1e@icloud.com
 - GitHub: [yuanlinm](https://github.com/yuanlinm)
-
-## Links
-
-- [GitHub Profile](https://github.com/yuanlinm)
-- [Repository](https://github.com/yuanlinm/yuanlinm.github.io)
