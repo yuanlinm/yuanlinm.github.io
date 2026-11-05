@@ -1,0 +1,97 @@
+{{ define "main" }}
+{{- $cv := hugo.Data.cv }}
+<section class="hero">
+  <div class="intro">
+    <h1>{{ site.Params.author }}{{ with site.Params.authorLocal }}<span class="local" lang="zh-CN">{{ . }}</span>{{ end }}</h1>
+    <p class="role">{{ site.Params.role }}{{ with site.Params.affiliation }} · {{ . }}{{ end }}</p>
+    <div class="bio">{{ .Content }}</div>
+  </div>
+  <dl class="contact">
+    {{- with site.Params.email }}<dt>Email</dt><dd><a href="mailto:{{ . }}">{{ . }}</a></dd>{{ end }}
+    {{- with site.Params.github }}<dt>GitHub</dt><dd><a href="https://github.com/{{ . }}">{{ . }}</a></dd>{{ end }}
+    {{- with site.Params.cv }}<dt>CV</dt><dd><a href="{{ . | relURL }}">PDF</a></dd>{{ end }}
+    <dt>Feed</dt><dd><a href="{{ "index.xml" | relURL }}">/index.xml</a></dd>
+  </dl>
+</section>
+
+{{- with $cv.research }}
+<section class="row" id="research">
+  <h2 class="label">Research</h2>
+  <div class="body research">
+    {{- range . }}
+    <div>
+      <h3>{{ .title | markdownify }}</h3>{{ with .status }}<span class="status {{ . }}">{{ . }}</span>{{ end }}
+      <p>{{ .summary | markdownify }}</p>
+    </div>
+    {{- end }}
+    {{- with $cv.keywords }}<p class="keywords">{{ delimit . " / " }}</p>{{ end }}
+  </div>
+</section>
+{{- end }}
+
+<section class="row" id="writing">
+  <div class="label">
+    <h2 class="label" style="margin:0">Writing</h2>
+    <p class="label-note">latest {{ site.Params.homeLatest | default 5 }}, newest first</p>
+  </div>
+  <div class="body">
+    {{- $posts := (where site.RegularPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
+    {{- if $posts }}
+    <ol class="posts">
+      {{- range first (site.Params.homeLatest | default 5) $posts }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span class="kind">{{ partial "kind.html" . }}</span>
+      </li>
+      {{- end }}
+    </ol>
+    {{- with site.GetPage "/archive" }}<p class="more"><a href="{{ .RelPermalink }}">All articles and posts →</a></p>{{ end }}
+    {{- else }}
+    <p class="empty">Nothing here yet.</p>
+    {{- end }}
+  </div>
+</section>
+
+{{- with $cv.publications }}
+<section class="row" id="publications">
+  <h2 class="label">Publications</h2>
+  <ol class="dated body">
+    {{- range . }}
+    <li>
+      <span class="when">{{ .year }}</span>
+      <div>
+        {{ .authors | markdownify }} {{ .title | markdownify }}{{ if not (findRE `[.?!。？！]$` .title) }}.{{ end }}
+        <em>{{ .journal }}</em>.
+        {{- with .doi }} <a class="mono" style="font-size:13px" href="https://doi.org/{{ . }}">doi:{{ . }}</a>{{ end }}
+        {{- with .url }} <a class="mono" style="font-size:13px" href="{{ . }}">link</a>{{ end }}
+        {{- with .note }} <span class="muted">{{ . | markdownify }}</span>{{ end }}
+      </div>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+{{- end }}
+
+{{- with $cv.education }}
+<section class="row" id="education">
+  <h2 class="label">Education</h2>
+  <ol class="dated wide body">
+    {{- range . }}
+    <li><span class="when">{{ .period }}</span><div><strong>{{ .degree }}</strong> · {{ .institution }}</div></li>
+    {{- end }}
+  </ol>
+</section>
+{{- end }}
+
+{{- with $cv.software }}
+<section class="row" id="software">
+  <h2 class="label">Software</h2>
+  <ul class="dated wide body">
+    {{- range . }}
+    <li><a class="name" href="{{ .url }}">{{ .name }}</a><div class="desc">{{ .summary | markdownify }} <span class="tag">{{ .lang }}</span></div></li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+{{ end }}

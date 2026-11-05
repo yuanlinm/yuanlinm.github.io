@@ -1,0 +1,14 @@
+{{- /* Archive filter pills: All / one per main section. Context: current page. */}}
+{{- $cur := . }}
+{{- $all := where site.RegularPages "Section" "in" site.Params.mainSections }}
+{{- $archive := site.GetPage "/archive" }}
+<nav class="filters" aria-label="Filter by type">
+  {{- with $archive }}
+  <a href="{{ .RelPermalink }}"{{ if eq $cur . }} aria-current="page"{{ end }}>All <span class="n">{{ len $all }}</span></a>
+  {{- end }}
+  {{- range site.Params.mainSections }}
+    {{- with site.GetPage (printf "/%s" .) }}
+  <a href="{{ .RelPermalink }}"{{ if eq $cur . }} aria-current="page"{{ end }}>{{ .Title }} <span class="n">{{ len .RegularPages }}</span></a>
+    {{- end }}
+  {{- end }}
+</nav>
