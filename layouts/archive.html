@@ -1,5 +1,5 @@
 {{ define "main" }}
 <h1 class="page-title">{{ .Title }}</h1>
 {{- with .Content }}<div class="muted">{{ . }}</div>{{ end }}
-{{ partial "post-list.html" (where site.RegularPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
+{{ partial "post-list.html" (dict "pages" (where site.RegularPages "Section" "in" site.Params.mainSections).ByDate.Reverse "chips" true) }}
 {{ end }}

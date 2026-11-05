@@ -23,6 +23,8 @@ summaryLength   = 80
   branch       = "main"
   mainSections = ["articles", "blog"]
   homeLatest   = 5         # number of posts listed on the home page
+  heroFigure   = true      # schematic figure at the top of the home page
+  heroCaption  = "Exposure–response, schematic. Air pollution, lung cancer in never-smokers, causal inference."
 
   # Comments via giscus (https://giscus.app). Off by default.
   [params.giscus]

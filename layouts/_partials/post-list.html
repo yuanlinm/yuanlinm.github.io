@@ -1,10 +1,11 @@
-{{- /* Year-grouped list. Context: a Pages collection. */}}
-{{- with . }}
+{{- /* Year-grouped list. Context: dict "pages" <Pages> "chips" <bool>. */}}
+{{- $chips := .chips }}
+{{- with .pages }}
   {{- range .GroupByDate "2006" }}
 <h2 class="year">{{ .Key }}</h2>
-<ol class="list short">
+<ol class="list short{{ if $chips }} tagged{{ end }}">
     {{- range .Pages }}
-  <li><time class="d" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }} <span class="muted">(draft)</span>{{ end }}</li>
+  <li><time class="d" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time><a class="t" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if $chips }}<span class="chip">{{ partial "kind.html" . }}</span>{{ end }}{{ if .Draft }} <span class="muted">(draft)</span>{{ end }}</li>
     {{- end }}
 </ol>
   {{- end }}

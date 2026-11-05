@@ -3,12 +3,14 @@
 {{- $n := site.Params.homeLatest | default 5 }}
 {{- $posts := (where site.RegularPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
 
+{{- if site.Params.heroFigure | default true }}{{ partial "hero-figure.html" . }}{{ end }}
+
 {{- with $posts }}
 <section class="section" id="writing">
   <h2>Writing</h2>
-  <ol class="list">
+  <ol class="list tagged">
     {{- range first $n . }}
-    <li><time class="d" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    <li><time class="d" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><a class="t" href="{{ .RelPermalink }}">{{ .Title }}</a><span class="chip">{{ partial "kind.html" . }}</span></li>
     {{- end }}
   </ol>
   {{- if gt (len .) $n }}{{ with site.GetPage "/archive" }}<p class="more"><a href="{{ .RelPermalink }}">All writing</a></p>{{ end }}{{ end }}
@@ -33,8 +35,8 @@
     {{- range . }}
     <li class="pub"><span class="d">{{ .year }}</span><div>
       {{- .authors | markdownify }} {{ .title | markdownify }}{{ if not (findRE `[.?!。？！]$` .title) }}.{{ end }} <em>{{ .journal }}</em>.
-      {{- with .doi }} <a class="muted" href="https://doi.org/{{ . }}">doi</a>{{ end }}
-      {{- with .url }} <a class="muted" href="{{ . }}">link</a>{{ end }}
+      {{- with .doi }} <a href="https://doi.org/{{ . }}">doi</a>{{ end }}
+      {{- with .url }} <a href="{{ . }}">link</a>{{ end }}
       {{- with .note }} <span class="muted">{{ . | markdownify }}</span>{{ end -}}
     </div></li>
     {{- end }}
@@ -58,7 +60,7 @@
   <h2>Software</h2>
   <ul class="list">
     {{- range . }}
-    <li><a class="d" style="color:var(--ink)" href="{{ .url }}">{{ .name }}</a><div class="sub">{{ .summary | markdownify }}{{ with .lang }} ({{ . }}){{ end }}</div></li>
+    <li><a class="d" href="{{ .url }}">{{ .name }}</a><div class="sub">{{ .summary | markdownify }}{{ with .lang }} ({{ . }}){{ end }}</div></li>
     {{- end }}
   </ul>
 </section>

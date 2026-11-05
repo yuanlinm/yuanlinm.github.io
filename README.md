@@ -54,7 +54,9 @@ R Markdown / Quarto: render to `.md` (e.g. `quarto render x.qmd --to gfm`, or
 
 Edit `data/cv.yaml` (research, publications, education, software) and the
 `[params]` block of `hugo.toml` (email, GitHub, `cv = "/cv.pdf"` after adding
-`static/cv.pdf`). No template changes needed. The home page shows a Writing
+`static/cv.pdf`). No template changes needed. The schematic figure at the top of
+the home page is set by `heroFigure` / `heroCaption` in `hugo.toml`; it is
+decorative and contains no data. The home page shows a Writing
 section only once at least one post is published.
 
 ## Local preview
