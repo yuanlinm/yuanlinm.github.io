@@ -1,25 +1,42 @@
-# Structured CV data rendered on the home page.
-# Edit entries here; the layout never needs to change.
-# Text fields accept inline Markdown (e.g. **bold**, *italic*).
+# Everything shown on the page. Edit here; templates never need to change.
+# Text fields accept inline Markdown (**bold**, *italic*, [link](url)).
 
-research:
-  - title: Environmental exposures and lung cancer in never-smokers
-    status: current
-    summary: >-
-      Ambient air pollution and lung cancer incidence; exposure–response modelling
-      with Cox regression; mediation analysis for causal pathways; GWAS and
-      Mendelian randomization.
-  - title: Earlier work
-    status: completed
-    summary: >-
-      Long-term PM<sub>2.5</sub> and lung cancer outcomes; Baidu Index and public
-      interest in thyroid disease; COVID-19 knowledge, attitude and practice among
-      returning workers.
+profile:
+  name: Yuanlin Mou
+  role: Ph.D. Candidate in Epidemiology
+  affiliation: Nanjing Medical University
+  # Put a square photo at static/avatar.jpg and set: avatar: /avatar.jpg
+  # Left empty, a monogram is shown instead.
+  avatar: /avatar.jpg
+  initials: YM
+  bio: >-
+    I study how ambient air pollution affects lung cancer risk in never-smokers,
+    using epidemiologic and causal inference methods.
+  email: boomers_clip.1e@icloud.com
+  github: yuanlinm
 
-keywords: [Air pollution, Causal inference, Genetic epidemiology, Never-smokers]
+now:
+  status: In progress
+  title: Environmental exposures and lung cancer in never-smokers
+  items:
+    - Ambient air pollution and lung cancer incidence
+    - Exposure–response modelling with Cox regression
+    - Mediation analysis for causal pathways
+    - GWAS and Mendelian randomization
+
+education:
+  - period: 2025 – present
+    degree: Ph.D. in Epidemiology
+    institution: Nanjing Medical University
+  - period: 2022 – 2025
+    degree: M.Med. in Epidemiology
+    institution: Nanjing Medical University
+  - period: 2017 – 2022
+    degree: MBBS in Preventive Medicine
+    institution: Chongqing Medical University
 
 # Newest first. `authors` is Markdown so your own name can be bolded.
-# Optional keys: doi (renders as a link), url, note.
+# Optional keys: doi (renders a DOI button), url, note.
 publications:
   - year: 2025
     authors: "Zhu, M., Han, Y., **#Mou, Y.**, et al."
@@ -41,24 +58,3 @@ publications:
     title: Investigation of knowledge, attitude and practice of personal protection among different types of workers returning to work under COVID-19 epidemic
     journal: Frontiers in Public Health
     doi: 10.3389/fpubh.2021.679699
-
-education:
-  - period: 2025 – present
-    degree: Ph.D. in Epidemiology
-    institution: Nanjing Medical University
-  - period: 2022 – 2025
-    degree: M.Med. in Epidemiology
-    institution: Nanjing Medical University
-  - period: 2017 – 2022
-    degree: MBBS in Preventive Medicine
-    institution: Chongqing Medical University
-
-software:
-  - name: myepi
-    url: https://github.com/yuanlinm/myepi
-    lang: R
-    summary: An R package of epidemiology tools for statistical analysis and research.
-  - name: apgis
-    url: https://github.com/yuanlinm/apgis
-    lang: Python
-    summary: Processing, analysing and visualising air pollution data with GIS and spatial tools.

@@ -1,5 +1,1 @@
-<footer class="site-footer">
-  <span>© {{ now.Year }} {{ site.Copyright }}
-    {{- if and .IsPage .File }} · <a href="{{ site.Params.repo }}/edit/{{ site.Params.branch }}/content/{{ .File.Path }}">Edit this page on GitHub</a>{{ end }}</span>
-  <span>Built with Hugo · <a href="{{ site.Params.repo }}">Source</a></span>
-</footer>
+<footer class="site-footer">© {{ now.Year }} {{ site.Title }}</footer>
