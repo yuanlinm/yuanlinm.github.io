@@ -1,82 +1,14 @@
-baseURL      = "https://yuanlinm.github.io/"
-locale       = "en"
-title        = "yuanlinm"
-copyright    = "yuanlinm"
-timeZone     = "Asia/Shanghai"
+# Single-page personal site. All page content lives in data/cv.yaml.
+baseURL   = "https://yuanlinm.github.io/"
+locale    = "en"
+title     = "yuanlinm"        # browser tab title
+timeZone  = "Asia/Shanghai"
 
-enableGitInfo   = true   # lastmod from git history ("Updated …" on posts)
 enableRobotsTXT = true
-hasCJKLanguage  = true   # correct word count / reading time for Chinese
-capitalizeListTitles = false  # keep tag names as written
-summaryLength   = 80
+disableKinds    = ["section", "taxonomy", "term", "rss", "sitemap"]
 
 [params]
-  description  = "Epidemiology: air pollution, lung cancer in never-smokers, causal inference."
-  author       = "Yuanlin Mou"
-  authorLocal  = "牟园淋"
-  role         = "Ph.D. Candidate in Epidemiology"
-  affiliation  = "Nanjing Medical University"
-  email        = "boomers_clip.1e@icloud.com"
-  github       = "yuanlinm"
-  cv           = ""        # e.g. "/cv.pdf" after putting cv.pdf in static/
-  repo         = "https://github.com/yuanlinm/yuanlinm.github.io"
-  branch       = "main"
-  mainSections = ["articles", "blog"]
-  homeLatest   = 5         # number of posts listed on the home page
-  heroFigure   = true      # schematic figure at the top of the home page
-  heroCaption  = "Exposure–response, schematic. Air pollution, lung cancer in never-smokers, causal inference."
-
-  # Comments via giscus (https://giscus.app). Off by default.
-  [params.giscus]
-    enabled    = false
-    repo       = "yuanlinm/yuanlinm.github.io"
-    repoId     = ""
-    category   = "Announcements"
-    categoryId = ""
-
-[permalinks.page]
-  articles = "/articles/:year/:slug/"
-  blog     = "/blog/:year/:month/:slug/"
-
-[taxonomies]
-  tag = "tags"
+  description = "Yuanlin Mou — Ph.D. candidate in epidemiology, Nanjing Medical University."
 
 [outputs]
-  home    = ["html", "rss"]
-  section = ["html", "rss"]
-
-[services.rss]
-  limit = 50
-
-[markup]
-  [markup.goldmark.renderer]
-    unsafe = true            # allow raw HTML inside Markdown
-  [markup.goldmark.renderHooks.link]
-    useEmbedded = "fallback" # resolve [text](../blog/x.md) links to permalinks
-  [markup.goldmark.renderHooks.image]
-    useEmbedded = "fallback"
-  [markup.goldmark.extensions.passthrough]
-    enable = true
-    [markup.goldmark.extensions.passthrough.delimiters]
-      block  = [["\\[", "\\]"], ["$$", "$$"]]
-      inline = [["\\(", "\\)"], ["$", "$"]]
-  [markup.highlight]
-    noClasses = false        # colours come from assets/css/site.css
-  [markup.tableOfContents]
-    startLevel = 2
-    endLevel   = 3
-    ordered    = false
-
-[menus]
-  [[menus.main]]
-    name    = "Articles"
-    pageRef = "/articles"
-    weight  = 1
-  [[menus.main]]
-    name    = "Blog"
-    pageRef = "/blog"
-    weight  = 2
-  [[menus.main]]
-    name    = "Archive"
-    pageRef = "/archive"
-    weight  = 3
+  home = ["html"]

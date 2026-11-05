@@ -1,3 +1,0 @@
-{{- /* Short label of a page's section ("Article" / "Blog"), from the section's front matter. */}}
-{{- $s := site.GetPage (printf "/%s" .Section) }}
-{{- return (or $s.Params.label $s.Title .Section) }}

@@ -1,4 +1,8 @@
 {{ define "main" }}
-<h1 class="page-title">Page not found</h1>
-<p class="muted">Try the <a href="{{ "/" | relURL }}">home page</a> or the <a href="{{ "archive/" | relURL }}">archive</a>.</p>
+<main id="main" class="stage">
+  <section class="card glass wide notfound">
+    <h1>Page not found</h1>
+    <p><a class="pill" href="{{ "/" | relURL }}">Back to home</a></p>
+  </section>
+</main>
 {{ end }}

@@ -1,68 +1,81 @@
 {{ define "main" }}
 {{- $cv := hugo.Data.cv }}
-{{- $n := site.Params.homeLatest | default 5 }}
-{{- $posts := (where site.RegularPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
+{{- $p := $cv.profile }}
 
-{{- if site.Params.heroFigure | default true }}{{ partial "hero-figure.html" . }}{{ end }}
+<nav class="dock glass" aria-label="Sections">
+  <a href="#about" aria-current="true">About</a>
+  {{- with $cv.now }}<a href="#now">Now</a>{{ end }}
+  {{- with $cv.education }}<a href="#education">Education</a>{{ end }}
+  {{- with $cv.publications }}<a href="#publications">Publications</a>{{ end }}
+</nav>
 
-{{- with $posts }}
-<section class="section" id="writing">
-  <h2>Writing</h2>
-  <ol class="list tagged">
-    {{- range first $n . }}
-    <li><time class="d" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><a class="t" href="{{ .RelPermalink }}">{{ .Title }}</a><span class="chip">{{ partial "kind.html" . }}</span></li>
-    {{- end }}
-  </ol>
-  {{- if gt (len .) $n }}{{ with site.GetPage "/archive" }}<p class="more"><a href="{{ .RelPermalink }}">All writing</a></p>{{ end }}{{ end }}
-</section>
-{{- end }}
+<main id="main" class="stage">
 
-{{- with $cv.research }}
-<section class="section" id="research">
-  <h2>Research</h2>
-  <ul class="list">
-    {{- range . }}
-    <li><span class="d">{{ .period }}</span><div>{{ if .title }}{{ .title | markdownify }}<br><span class="sub">{{ .summary | markdownify }}</span>{{ else }}<span class="sub">{{ .summary | markdownify }}</span>{{ end }}</div></li>
-    {{- end }}
-  </ul>
-</section>
-{{- end }}
+  <section id="about" class="card glass profile" aria-labelledby="name">
+    <div class="avatar">
+      {{- with $p.avatar }}
+      <img src="{{ . | relURL }}" alt="{{ $p.name }}" width="132" height="132">
+      {{- else }}
+      <span class="monogram" aria-hidden="true">{{ $p.initials }}</span>
+      {{- end }}
+    </div>
+    <div class="who">
+      <h1 id="name">{{ $p.name }}{{ with $p.name_local }} <span class="local" lang="zh-CN">{{ . }}</span>{{ end }}</h1>
+      <p class="role">{{ $p.role }}{{ with $p.affiliation }} · {{ . }}{{ end }}</p>
+      <p class="bio">{{ $p.bio | markdownify }}</p>
+      <p class="actions">
+        {{- with $p.email }}<a class="pill" href="mailto:{{ . }}">{{ partial "icon.html" "mail" }}<span>{{ . }}</span></a>{{ end }}
+        {{- with $p.github }}<a class="pill" href="https://github.com/{{ . }}">{{ partial "icon.html" "github" }}<span>{{ . }}</span></a>{{ end }}
+      </p>
+    </div>
+  </section>
 
-{{- with $cv.publications }}
-<section class="section" id="publications">
-  <h2>Publications</h2>
-  <ol class="list">
-    {{- range . }}
-    <li class="pub"><span class="d">{{ .year }}</span><div>
-      {{- .authors | markdownify }} {{ .title | markdownify }}{{ if not (findRE `[.?!。？！]$` .title) }}.{{ end }} <em>{{ .journal }}</em>.
-      {{- with .doi }} <a href="https://doi.org/{{ . }}">doi</a>{{ end }}
-      {{- with .url }} <a href="{{ . }}">link</a>{{ end }}
-      {{- with .note }} <span class="muted">{{ . | markdownify }}</span>{{ end -}}
-    </div></li>
-    {{- end }}
-  </ol>
-</section>
-{{- end }}
+  {{- with $cv.now }}
+  <section id="now" class="card glass" aria-labelledby="now-h">
+    <h2 id="now-h" class="card-h">{{ partial "icon.html" "spark" }}Now{{ with .status }}<span class="status"><i aria-hidden="true"></i>{{ . }}</span>{{ end }}</h2>
+    <p class="now-title">{{ .title | markdownify }}</p>
+    <ul class="now-list">
+      {{- range .items }}<li>{{ . | markdownify }}</li>{{ end }}
+    </ul>
+  </section>
+  {{- end }}
 
-{{- with $cv.education }}
-<section class="section" id="education">
-  <h2>Education</h2>
-  <ol class="list">
-    {{- range . }}
-    <li><span class="d">{{ .period }}</span><div>{{ .degree }}<span class="sub">, {{ .institution }}</span></div></li>
-    {{- end }}
-  </ol>
-</section>
-{{- end }}
+  {{- with $cv.education }}
+  <section id="education" class="card glass" aria-labelledby="edu-h">
+    <h2 id="edu-h" class="card-h">{{ partial "icon.html" "cap" }}Education</h2>
+    <ol class="timeline">
+      {{- range . }}
+      <li>
+        <span class="when">{{ .period }}</span>
+        <span class="what">{{ .degree }}</span>
+        <span class="where">{{ .institution }}</span>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- end }}
 
-{{- with $cv.software }}
-<section class="section" id="software">
-  <h2>Software</h2>
-  <ul class="list">
-    {{- range . }}
-    <li><a class="d" href="{{ .url }}">{{ .name }}</a><div class="sub">{{ .summary | markdownify }}{{ with .lang }} ({{ . }}){{ end }}</div></li>
-    {{- end }}
-  </ul>
-</section>
-{{- end }}
+  {{- with $cv.publications }}
+  <section id="publications" class="card glass wide" aria-labelledby="pub-h">
+    <h2 id="pub-h" class="card-h">{{ partial "icon.html" "book" }}Publications<span class="count">{{ len . }}</span></h2>
+    <ol class="pubs">
+      {{- range . }}
+      <li>
+        <span class="year">{{ .year }}</span>
+        <div class="cite">
+          <p class="t">{{ .title | markdownify }}</p>
+          <p class="a">{{ .authors | markdownify }}</p>
+          <p class="j"><em>{{ .journal }}</em>
+            {{- with .doi }}<a class="pill sm" href="https://doi.org/{{ . }}" aria-label="DOI {{ . }}">DOI{{ partial "icon.html" "arrow" }}</a>{{ end }}
+            {{- with .url }}<a class="pill sm" href="{{ . }}">Link{{ partial "icon.html" "arrow" }}</a>{{ end }}
+            {{- with .note }} <span class="note">{{ . | markdownify }}</span>{{ end }}
+          </p>
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- end }}
+
+</main>
 {{ end }}
