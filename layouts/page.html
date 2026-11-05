@@ -1,0 +1,50 @@
+{{ define "main" }}
+{{- $section := site.GetPage (printf "/%s" .Section) }}
+{{- $isPost := in site.Params.mainSections .Section }}
+<header class="post-head">
+  {{- if $isPost }}
+  <p class="crumb"><a href="{{ $section.RelPermalink }}">{{ upper $section.Title }}</a> / <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></p>
+  {{- end }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Params.subtitle }}<p class="subtitle">{{ . | markdownify }}</p>{{ end }}
+  {{- if $isPost }}
+  <p class="post-meta">
+    <span>{{ or .Params.author site.Params.author }}</span>
+    <span>{{ .ReadingTime }} min read</span>
+    {{- if and .GitInfo (gt (.Lastmod.Sub .Date).Hours 24) }}<span>Updated {{ .Lastmod.Format "2006-01-02" }}</span>{{ end }}
+    {{- with .GetTerms "tags" }}<span class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</span>{{ end }}
+    {{- if .Draft }}<span class="draft-flag">draft — not published</span>{{ end }}
+  </p>
+  {{- end }}
+</header>
+
+<div class="post-grid">
+  <article class="prose">
+    {{ .Content }}
+    {{- if and $isPost (.Params.cite | default ($section.Params.cite | default false)) }}
+    <aside class="cite" aria-label="How to cite">
+      <span class="eyebrow">Cite as</span>
+      <code>{{ site.Params.author }} ({{ .Date.Year }}). {{ .Title }}. {{ site.Title }}. {{ .Permalink }}</code>
+    </aside>
+    {{- end }}
+  </article>
+  {{- $tocOn := .Params.toc | default ($section.Params.toc | default false) }}
+  {{- if and $tocOn (gt (len .Fragments.Headings) 0) (findRE "<li>" .TableOfContents) }}
+  <aside class="toc" aria-label="On this page">
+    <p class="eyebrow">On this page</p>
+    {{ .TableOfContents }}
+  </aside>
+  {{- end }}
+</div>
+
+{{- if $isPost }}
+{{- $older := .PrevInSection }}{{ $newer := .NextInSection }}
+{{- if or $older $newer }}
+<nav class="post-nav" aria-label="Post navigation">
+  {{- with $older }}<a class="prev" href="{{ .RelPermalink }}"><span>← Older</span>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+  {{- with $newer }}<a class="next" href="{{ .RelPermalink }}"><span>Newer →</span>{{ .Title }}</a>{{ end }}
+</nav>
+{{- end }}
+{{- if and site.Params.giscus.enabled (ne .Params.comments false) }}{{ partial "comments.html" . }}{{ end }}
+{{- end }}
+{{ end }}

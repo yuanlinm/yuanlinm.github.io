@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{- $pages := (where site.RegularPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
+<header class="page-head">
+  <h1>{{ .Title }}</h1>
+  {{- with .Content }}<div class="lede">{{ . }}</div>{{ end }}
+  {{ partial "filters.html" . }}
+</header>
+{{ partial "post-list.html" (dict "pages" $pages "showKind" true) }}
+{{- with site.Taxonomies.tags }}
+<section class="row">
+  <h2 class="label">Tags</h2>
+  <p class="tags-cloud body">
+    {{- range .ByCount }}
+    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><span>({{ .Count }})</span>
+    {{- end }}
+  </p>
+</section>
+{{- end }}
+{{ end }}

@@ -1,0 +1,5 @@
+{{- /* {{< figure src="plot.png" caption="图 1 …" alt="…" >}} — numbered figures with captions. */}}
+<figure>
+  <img src="{{ .Get "src" }}" alt="{{ .Get "alt" | default (.Get "caption" | plainify) }}"{{ with .Get "width" }} width="{{ . }}"{{ end }} loading="lazy">
+  {{- with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>
