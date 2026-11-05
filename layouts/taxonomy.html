@@ -1,11 +1,12 @@
 {{ define "main" }}
-<header class="page-head"><h1>{{ .Title }}</h1></header>
-<section class="row">
-  <h2 class="label">All tags</h2>
-  <p class="tags-cloud body">
-    {{- range .Data.Terms.Alphabetical }}
-    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><span>({{ .Count }})</span>
-    {{- end }}
-  </p>
-</section>
+<h1 class="page-title">{{ .Title }}</h1>
+{{- with .Data.Terms.Alphabetical }}
+<ul class="list">
+  {{- range . }}
+  <li><span class="d">{{ .Count }}</span><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+  {{- end }}
+</ul>
+{{- else }}
+<p class="empty">No tags yet.</p>
+{{- end }}
 {{ end }}

@@ -1,8 +1,5 @@
 {{ define "main" }}
-<header class="page-head">
-  <h1>{{ .Title }}</h1>
-  {{- with .Content }}<div class="lede">{{ . }}</div>{{ end }}
-  {{- if eq .Kind "section" }}{{ partial "filters.html" . }}{{ end }}
-</header>
-{{ partial "post-list.html" (dict "pages" .RegularPages.ByDate.Reverse "showKind" (ne .Kind "section")) }}
+<h1 class="page-title">{{ .Title }}</h1>
+{{- with .Content }}<div class="muted">{{ . }}</div>{{ end }}
+{{ partial "post-list.html" .RegularPages.ByDate.Reverse }}
 {{ end }}

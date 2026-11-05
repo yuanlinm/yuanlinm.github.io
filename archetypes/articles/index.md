@@ -15,7 +15,7 @@ toc: true
   - 表格：在表格上方写 {{</* tablecaption "表 1" */>}}标题{{</* /tablecaption */>}}
   - 图片：把 plot.png 放在本文件夹，写 {{</* figure src="plot.png" caption="图 1　说明" */>}}
   - 脚注：正文写 [^1]，文末写 [^1]: 内容
-  - 交叉引用本站文章：[标题](/blog/2026-11-05-about-this-site)
+  - 交叉引用本站文章：[标题](/blog/2026-12-01-some-note)
 -->
 
 ## 背景

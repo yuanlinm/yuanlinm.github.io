@@ -1,5 +1,9 @@
 <footer class="site-footer">
-  <span>© {{ now.Year }} {{ site.Copyright }}
-    {{- if and .IsPage .File }} · <a href="{{ site.Params.repo }}/edit/{{ site.Params.branch }}/content/{{ .File.Path }}">Edit this page on GitHub</a>{{ end }}</span>
-  <span>Built with Hugo · <a href="{{ site.Params.repo }}">Source</a></span>
+  <span>© {{ now.Year }} {{ site.Copyright }}</span>
+  <span class="links">
+    {{- with site.Params.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+    {{- with site.Params.github }}<a href="https://github.com/{{ . }}">GitHub</a>{{ end }}
+    {{- with site.Params.cv }}<a href="{{ . | relURL }}">CV</a>{{ end }}
+    <a href="{{ "index.xml" | relURL }}">RSS</a>
+  </span>
 </footer>

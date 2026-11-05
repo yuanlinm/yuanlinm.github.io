@@ -1,22 +1,20 @@
 # Structured CV data rendered on the home page.
 # Edit entries here; the layout never needs to change.
 # Text fields accept inline Markdown (e.g. **bold**, *italic*).
+# research: `title` is optional; `summary` is shown muted under a title.
 
 research:
-  - title: Environmental exposures and lung cancer in never-smokers
-    status: current
+  - period: Current
+    title: Environmental exposures and lung cancer in never-smokers
     summary: >-
       Ambient air pollution and lung cancer incidence; exposure–response modelling
       with Cox regression; mediation analysis for causal pathways; GWAS and
       Mendelian randomization.
-  - title: Earlier work
-    status: completed
+  - period: Earlier
     summary: >-
       Long-term PM<sub>2.5</sub> and lung cancer outcomes; Baidu Index and public
       interest in thyroid disease; COVID-19 knowledge, attitude and practice among
       returning workers.
-
-keywords: [Air pollution, Causal inference, Genetic epidemiology, Never-smokers]
 
 # Newest first. `authors` is Markdown so your own name can be bolded.
 # Optional keys: doi (renders as a link), url, note.
@@ -43,13 +41,13 @@ publications:
     doi: 10.3389/fpubh.2021.679699
 
 education:
-  - period: 2025 – present
+  - period: 2025–
     degree: Ph.D. in Epidemiology
     institution: Nanjing Medical University
-  - period: 2022 – 2025
+  - period: 2022–2025
     degree: M.Med. in Epidemiology
     institution: Nanjing Medical University
-  - period: 2017 – 2022
+  - period: 2017–2022
     degree: MBBS in Preventive Medicine
     institution: Chongqing Medical University
 

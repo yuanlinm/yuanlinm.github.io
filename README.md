@@ -1,6 +1,6 @@
 # yuanlinm.github.io
 
-Personal site of Yuanlin Mou — a CV-style home page plus two writing streams
+Personal site — a CV-style home page plus two writing streams
 (**Articles** and **Blog**). Built with [Hugo](https://gohugo.io) (no external
 theme) and deployed to GitHub Pages by GitHub Actions on every push to `main`.
 
@@ -8,8 +8,8 @@ theme) and deployed to GitHub Pages by GitHub Actions on every push to `main`.
 
 ```
 content/
-  _index.md           home-page bio (Markdown)
-  articles/           formal articles: TOC + "Cite as" line
+  _index.md           home page (content comes from data/cv.yaml)
+  articles/           formal articles: collapsible contents + citation line
   blog/               short notes
   archive.md          /archive/ — all writing grouped by year
 data/cv.yaml          research, publications, education, software
@@ -52,8 +52,10 @@ R Markdown / Quarto: render to `.md` (e.g. `quarto render x.qmd --to gfm`, or
 
 ## Updating the CV
 
-Edit `data/cv.yaml` and the `[params]` block of `hugo.toml` (name, role, email,
-`cv = "/cv.pdf"` after adding `static/cv.pdf`). No template changes needed.
+Edit `data/cv.yaml` (research, publications, education, software) and the
+`[params]` block of `hugo.toml` (email, GitHub, `cv = "/cv.pdf"` after adding
+`static/cv.pdf`). No template changes needed. The home page shows a Writing
+section only once at least one post is published.
 
 ## Local preview
 
@@ -70,5 +72,5 @@ and fill `[params.giscus]` in `hugo.toml`.
 
 ## Licences
 
-Fonts in `static/fonts/` (Source Serif 4, IBM Plex Mono) are under the SIL Open
-Font License 1.1; see the licence files alongside them.
+Source Serif 4 in `static/fonts/` is under the SIL Open Font License 1.1; see
+the licence file alongside it.
