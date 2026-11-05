@@ -3,12 +3,11 @@
 
 profile:
   name: Yuanlin Mou
-  name_local: 牟园淋
   role: Ph.D. Candidate in Epidemiology
   affiliation: Nanjing Medical University
   # Put a square photo at static/avatar.jpg and set: avatar: /avatar.jpg
   # Left empty, a monogram is shown instead.
-  avatar: ""
+  avatar: /avatar.jpg
   initials: YM
   bio: >-
     I study how ambient air pollution affects lung cancer risk in never-smokers,

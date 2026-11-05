@@ -9,7 +9,7 @@ Everything on the page comes from **`data/cv.yaml`**:
 
 | Block          | Keys                                                            |
 |----------------|-----------------------------------------------------------------|
-| `profile`      | name, name_local, role, affiliation, avatar, initials, bio, email, github |
+| `profile`      | name, name_local (optional), role, affiliation, avatar, initials, bio, email, github |
 | `now`          | status, title, items                                            |
 | `education`    | period, degree, institution                                     |
 | `publications` | year, authors, title, journal, doi / url / note                 |
